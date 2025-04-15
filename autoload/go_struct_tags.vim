@@ -167,7 +167,7 @@ func s:create_cmd(args) abort
   let l:cmd_args = a:args.cmd_args
   
   " Default transform setting (camelcase, snakecase, etc)
-  let l:modifytags_transform = get(g:, 'go_struct_tags_transform', 'camelcase')
+  let l:modifytags_transform = get(g:, 'go_struct_tags_transform', 'snakecase')
   
   " Default setting for skipping unexported fields
   let l:modifytags_skip_unexported = get(g:, 'go_struct_tags_skip_unexported', 0)

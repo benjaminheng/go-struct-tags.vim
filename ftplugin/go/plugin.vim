@@ -4,7 +4,7 @@ set cpo&vim
 
 " Configuration options with defaults
 if !exists('g:go_struct_tags_transform')
-  let g:go_struct_tags_transform = 'camelcase'
+  let g:go_struct_tags_transform = 'snakecase'
 endif
 
 if !exists('g:go_struct_tags_skip_unexported')
