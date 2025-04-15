@@ -1,0 +1,48 @@
+*go-struct-tags.txt*  Standalone Go struct tag manipulation
+
+==============================================================================
+INTRODUCTION                                         *standalone-tags*
+
+This plugin provides commands to add and remove struct tags in Go files without
+requiring the full vim-go package. It uses the gomodifytags tool to modify
+struct tags.
+
+==============================================================================
+REQUIREMENTS                                         *standalone-tags-requirements*
+
+- Vim with +job feature or Neovim
+- gomodifytags (install with: go install github.com/fatih/gomodifytags@latest)
+
+==============================================================================
+COMMANDS                                             *standalone-tags-commands*
+
+                                                     *:GoAddTags*
+:GoAddTags [key],[option]...
+    Add tags to struct fields. By default, it adds json tags.
+    Examples:
+        :GoAddTags            " adds json tags
+        :GoAddTags xml        " adds xml tags
+        :GoAddTags json,omitempty " adds json tags with omitempty option
+
+                                                     *:GoRemoveTags*
+:GoRemoveTags [key],[option]...
+    Remove tags from struct fields.
+    Examples:
+        :GoRemoveTags         " removes all tags
+        :GoRemoveTags json    " removes json tags
+        :GoRemoveTags json,omitempty " removes omitempty option from json tags
+
+==============================================================================
+CONFIGURATION                                        *standalone-tags-config*
+
+                                                     *g:standalone_tags_transform*
+g:go_struct_tags_transform
+    Transformation rule for tag names. Default: 'camelcase'
+    Possible values: 'snakecase', 'camelcase', 'lispcase', 'pascalcase',
+                    'keep'
+
+                                                     *g:standalone_tags_skip_unexported*
+g:go_struct_tags_skip_unexported
+    Skip unexported fields. Default: 0 (false)
+
+==============================================================================
