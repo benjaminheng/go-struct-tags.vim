@@ -12,10 +12,10 @@ if !exists('g:go_struct_tags_skip_unexported')
 endif
 
 command! -nargs=* -range=% -complete=customlist,<SID>TagsComplete GoAddTags
-      \ call gostructtags#Add(<line1>, <line2>, <count>, <f-args>)
+      \ call go_struct_tags#Add(<line1>, <line2>, <count>, <f-args>)
 
 command! -nargs=* -range=% -complete=customlist,<SID>TagsComplete GoRemoveTags
-      \ call gostructtags#Remove(<line1>, <line2>, <count>, <f-args>)
+      \ call go_struct_tags#Remove(<line1>, <line2>, <count>, <f-args>)
 
 function! s:TagsComplete(lead, cmdline, cursor) abort
   let tags = ['json', 'yaml', 'xml', 'toml', 'bson', 'mapstructure', 'protobuf', 'db', 'url', 'validate']

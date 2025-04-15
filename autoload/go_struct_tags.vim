@@ -49,7 +49,7 @@ function! s:CheckBinPath(bin) abort
 endfunction
 
 " mapped to :GoAddTags
-function! gostructtags#Add(start, end, count, ...) abort
+function! go_struct_tags#Add(start, end, count, ...) abort
   let fname = fnamemodify(expand("%"), ':p:gs?\\?/?')
   let offset = 0
   if a:count == -1
@@ -57,11 +57,11 @@ function! gostructtags#Add(start, end, count, ...) abort
   endif
 
   let test_mode = 0
-  call call("gostructtags#run", [a:start, a:end, offset, "add", fname, test_mode] + a:000)
+  call call("go_struct_tags#run", [a:start, a:end, offset, "add", fname, test_mode] + a:000)
 endfunction
 
 " mapped to :GoRemoveTags
-function! gostructtags#Remove(start, end, count, ...) abort
+function! go_struct_tags#Remove(start, end, count, ...) abort
   let fname = fnamemodify(expand("%"), ':p:gs?\\?/?')
   let offset = 0
   if a:count == -1
@@ -69,11 +69,11 @@ function! gostructtags#Remove(start, end, count, ...) abort
   endif
 
   let test_mode = 0
-  call call("gostructtags#run", [a:start, a:end, offset, "remove", fname, test_mode] + a:000)
+  call call("go_struct_tags#run", [a:start, a:end, offset, "remove", fname, test_mode] + a:000)
 endfunction
 
 " run runs gomodifytag
-function! gostructtags#run(start, end, offset, mode, fname, test_mode, ...) abort
+function! go_struct_tags#run(start, end, offset, mode, fname, test_mode, ...) abort
   " do not split this into multiple lines, somehow tests fail in that case
   let args = {'mode': a:mode,'start': a:start,'end': a:end,'offset': a:offset,'fname': a:fname,'cmd_args': a:000}
 
